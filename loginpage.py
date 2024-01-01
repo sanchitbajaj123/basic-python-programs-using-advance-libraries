@@ -5,55 +5,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import *
 
 
-def myconnection(username,pas,mobile,gender):
-    print("ye")
-    myconn = mysql.connector.connect("meh.sql")
-    print("f")
-    #creating the cursor object  
-    cur = myconn.cursor() 
-    sql1= "select username from register"
-    cur.execute(sql1)
-    print('h')
-  
-    #The row values are provided in the form of tuple   
-    val1=cur.fetchall()
-    print('h2')
-    print(val1)
-    final_result = [i[0] for i in val1]
-    print(final_result)
-    print(len(final_result))
-    
-    for i in range(0,len(final_result)):
-        var=str(final_result[i])
-        print(i)
-        print(var)
-        if len(var)<=0:
-            print("null")
-            try:
-                print('try')
-                print(i)
-                print(username)
-                print(pas)
-                print(gender)
-                cur.execute ("UPDATE register SET username='%s', pas='%s', mobile='%s', gender='%s' WHERE id=%d " % (username, pas, mobile, gender, i+1))
-                print("f")
-                break
-            except:
-                print('k')
 
- 
-    #try:  
-    #inserting the values into the table  
-    #cur.execute(sql1,val1)  
-  
-    #commit the transaction   
-    myconn.commit()  
-      
-    #except:  
-        #myconn.rollback()  
-  
-    print(cur.rowcount,"record inserted!")  
-    myconn.close()  
     
 def click():
         msg = QMessageBox(w)
@@ -63,10 +15,10 @@ def click():
         msg.setText("welcome to my projrct")
         o=msg.exec_()
         
-        print(b)
+
         a=line.text()
 
-        myconnection(a,p.text(),line1.text(),a)
+
     
     
 mem=QApplication(sys.argv)
